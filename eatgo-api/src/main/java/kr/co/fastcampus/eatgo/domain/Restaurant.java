@@ -1,6 +1,7 @@
 package kr.co.fastcampus.eatgo.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Restaurant {
     @Id
     @GeneratedValue
@@ -46,6 +48,8 @@ public class Restaurant {
     }
 
     public void setMenuItems(List<MenuItem> menuItems) {
+        this.menuItems = new ArrayList<>(menuItems);
+
         for (MenuItem menuItem: menuItems) {
             addMenuItem(menuItem);
         }
