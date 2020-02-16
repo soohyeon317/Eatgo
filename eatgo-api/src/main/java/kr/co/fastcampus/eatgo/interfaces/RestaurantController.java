@@ -38,10 +38,19 @@ public class RestaurantController {
         String name = resource.getName();
         String address = resource.getAddress();
         Restaurant restaurant = new Restaurant(name, address);
-        restaurantService.addRestaurant(restaurant);
+        Restaurant created =restaurantService.addRestaurant(restaurant);
 
-        URI uri = new URI("/restaurants/" + restaurant.getId());
+        URI uri = new URI("/restaurants/" + created.getId());
         return ResponseEntity.created(uri).body("{}");
+    }
+
+    @PatchMapping("/restaurants/{id}")
+    public String update(@PathVariable("id") Long id,
+                         @RequestBody Restaurant resource) {
+        String name = resource.getName();
+        String address = resource.getAddress();
+        restaurantService.updateRestaurant(id, name, address);
+        return "{}";
     }
 
 }
