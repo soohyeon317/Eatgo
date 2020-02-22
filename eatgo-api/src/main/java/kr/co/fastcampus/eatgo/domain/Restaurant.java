@@ -1,9 +1,7 @@
 package kr.co.fastcampus.eatgo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Restaurant {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -30,17 +29,20 @@ public class Restaurant {
     private String address;
 
     @Transient
-    private List<MenuItem> menuItems = new ArrayList<>();
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<MenuItem> menuItems;
 
     public Restaurant(String name, String address) {
         this.name = name;
         this.address = address;
+        this.menuItems = new ArrayList<>();
     }
 
     public Restaurant(Long id, String name, String address) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.menuItems = new ArrayList<>();
     }
 
     public String getInformation() {
@@ -48,12 +50,11 @@ public class Restaurant {
     }
 
     public void addMenuItem(MenuItem menuItem) {
-        menuItems.add(menuItem);
+        this.menuItems.add(menuItem);
     }
 
     public void setMenuItems(List<MenuItem> menuItems) {
-        this.menuItems = new ArrayList<>(menuItems);
-
+        this.menuItems = new ArrayList<>();
         for (MenuItem menuItem: menuItems) {
             addMenuItem(menuItem);
         }
