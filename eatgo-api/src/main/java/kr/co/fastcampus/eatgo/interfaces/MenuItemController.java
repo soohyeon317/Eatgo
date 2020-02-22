@@ -12,8 +12,7 @@ import java.util.List;
 @RestController
 public class MenuItemController {
 
-    final
-    MenuItemService menuItemService;
+    final MenuItemService menuItemService;
 
     public MenuItemController(MenuItemService menuItemService) {
         this.menuItemService = menuItemService;
