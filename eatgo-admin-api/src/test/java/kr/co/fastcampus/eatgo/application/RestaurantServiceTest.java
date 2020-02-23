@@ -1,6 +1,8 @@
 package kr.co.fastcampus.eatgo.application;
 
-import kr.co.fastcampus.eatgo.domain.*;
+import kr.co.fastcampus.eatgo.domain.Restaurant;
+import kr.co.fastcampus.eatgo.domain.RestaurantNotFoundException;
+import kr.co.fastcampus.eatgo.domain.RestaurantRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -13,9 +15,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 
 class RestaurantServiceTest {
 
@@ -37,6 +37,7 @@ class RestaurantServiceTest {
         List<Restaurant> restaurants = new ArrayList<>();
         Restaurant restaurant = Restaurant.builder()
                 .id(1004L)
+                .categoryId(1L)
                 .name("Bob zip")
                 .address("Seoul")
                 .build();
