@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-class RestaurantTests {
+class RestaurantTest {
 
     @Test
     public void creation() {
