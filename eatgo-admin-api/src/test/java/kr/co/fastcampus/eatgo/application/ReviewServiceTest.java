@@ -43,16 +43,4 @@ class ReviewServiceTest {
         assertThat(review.getDescription()).isEqualTo("Cool!");
     }
 
-    @Test
-    public void addReview() {
-        Review review = Review.builder()
-                .name("JOKER")
-                .score(3)
-                .description("Mat-it-dat")
-                .build();
-
-        reviewService.addReview(1004L, review);
-
-        verify(reviewRepository).save(any());
-    }
 }
