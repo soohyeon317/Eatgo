@@ -1,4 +1,4 @@
-package kr.co.fastcampus.eatgo.application;
+package kr.co.fastcampus.eatgo.domain;
 
 public class EmailNotExistedException extends RuntimeException {
 

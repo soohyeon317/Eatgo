@@ -1,5 +1,7 @@
 package kr.co.fastcampus.eatgo.application;
 
+import kr.co.fastcampus.eatgo.domain.EmailNotExistedException;
+import kr.co.fastcampus.eatgo.domain.PasswordWrongException;
 import kr.co.fastcampus.eatgo.domain.User;
 import kr.co.fastcampus.eatgo.domain.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
